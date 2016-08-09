@@ -2,7 +2,7 @@
   "name": "gre",
   "version": "0.1.0",
   "description": "日志输出, log output",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "node test"
   },
