@@ -1,0 +1,35 @@
+{
+  "name": "gre",
+  "version": "0.1.0",
+  "description": "日志输出, log output",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "gavinning",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavinning/gre.git"
+  },
+  "keywords": [
+    "log",
+    "logger",
+    "console",
+    "console.log",
+    "日志",
+    "日志输出"
+  ],
+  "bugs": {
+    "url": "https://github.com/gavinning/gre/issues"
+  },
+  "homepage": "https://github.com/gavinning/gre#readme",
+  "dependencies": {
+    "aimee-extend": "^1.0.1",
+    "aimee-is": "^1.1.0",
+    "colors": "^1.1.2",
+    "date-format": "0.0.2",
+    "tracer": "^0.8.3",
+    "vpm-config": "^2.0.0"
+  }
+}
