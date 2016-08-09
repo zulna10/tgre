@@ -107,3 +107,8 @@ g.error('hello', 'world', 123, {foo:'bar'}, [1, 2, 3, 4], Object);
 ```
 ==> Result :  
 ![result](img/4.png)
+
+---
+```sh
+npm test
+```
