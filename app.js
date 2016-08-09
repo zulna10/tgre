@@ -82,6 +82,7 @@ class Gre {
         this.config.init({
             format: 'dev',
             color: true,
+            project: null,
             dateformat: 'yyyy-MM-dd hh:mm:ss',
             keys: ['title', 'file', 'path', 'line', 'pos', 'message'],
             token: {
