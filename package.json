@@ -1,6 +1,6 @@
 {
   "name": "gre",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "日志输出, log output",
   "main": "app.js",
   "scripts": {

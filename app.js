@@ -46,14 +46,32 @@ var g = {
         return data.path
     },
 
+    // 返回日志格式化字符串
+    getFormatString(config) {
+        return config.rules[config.format] || config.format
+    },
+
+    /**
+     * 查询时间格式化规则
+     * @param   {Object}   config 标准配置文件
+     * @param   {boolean}  pure   是否返回纯净的时间格式化规则
+     * @return  {String}          时间格式化规则
+     */
+    getTimeFormat(config, pure) {
+        let format = this.getFormatString(config)
+        let timeFormat = format.match(regTimeFormat) || ['',`[${config.dateformat}]`]
+        let pureTimeFormat = timeFormat[1].replace(/\[|\]/g, '')
+        return pure ? pureTimeFormat : timeFormat[1]
+    },
+
     // 构建tracer支持的格式化规则
     getFormat() {
-        let format = this.config.rules[this.config.format] || this.config.format
-        let timeFormat = format.match(regTimeFormat) || ['','']
+        let format = this.getFormatString(this.config)
+        let timeFormat = this.getTimeFormat(this.config)
         let keys = format.match(regKey)
 
         // 时间格式化字符串
-        format = format.replace(timeFormat[1], '');
+        format = format.replace(timeFormat, '');
 
         // 构建token
         keys.forEach(key => {
@@ -64,13 +82,15 @@ var g = {
             }
             // 用户自定义的token
             else if(this.config.token[token]){
-                format = format.replace(key, this.config.token[token](token === 'time' ? timeFormat[1]: null))
+                format = format.replace(key, this.config.token[token]())
             }
             // 未知token
             else{
                 format = format.replace(key, token)
             }
         })
+        // 时间格式化字符串替换
+        format = format.replace('time', '{{timestamp}}')
         return format
     }
 }
@@ -84,13 +104,8 @@ class Gre {
             color: true,
             project: null,
             dateformat: 'yyyy-MM-dd hh:mm:ss',
-            keys: ['title', 'file', 'path', 'line', 'pos', 'message'],
-            token: {
-                time: (string) => {
-                    string = string.replace(/[\[\]]/g, '')
-                    return dateformat(string || this.config.get('dateformat'))
-                }
-            },
+            keys: ['timestamp', 'title', 'file', 'path', 'line', 'pos', 'message'],
+            token: {},
             rules: {
                 dev: '[:file::line] :message',
                 tiny: ':message',
@@ -99,7 +114,13 @@ class Gre {
                 time: '[:time[hh:mm:ss]][:file::line] :message',
                 fulltime: '[:time][:file::line] :message'
             },
-            preprocess: data => data.path = g.getRelativePath(data)
+            preprocess: data => {
+                data.path = g.getRelativePath(data)
+                data.timestamp = dateformat(
+                    g.getTimeFormat(this.config.get(), 1),
+                    new Date(data.timestamp)
+                )
+            }
         })
         if(is.string(options)){
             this.config.set('format', options)
