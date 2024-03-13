@@ -1,16 +1,16 @@
 {
-  "name": "gre",
-  "version": "0.1.1",
+  "name": "tgre",
+  "version": "0.0.1",
   "description": "日志输出, log output",
   "main": "app.js",
   "scripts": {
     "test": "node test"
   },
-  "author": "gavinning",
+  "author": "zulna10",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gavinning/gre.git"
+    "url": "git+https://github.com/zulna10/tgre.git"
   },
   "keywords": [
     "log",
@@ -21,9 +21,9 @@
     "日志输出"
   ],
   "bugs": {
-    "url": "https://github.com/gavinning/gre/issues"
+    "url": "https://github.com/zulna10/tgre/issues"
   },
-  "homepage": "https://github.com/gavinning/gre#readme",
+  "homepage": "https://github.com/zulna10/tgre#readme",
   "dependencies": {
     "aimee-extend": "^1.0.1",
     "aimee-is": "^1.1.0",
