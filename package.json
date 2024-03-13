@@ -31,5 +31,8 @@
     "date-format": "0.0.2",
     "tracer": "^0.8.3",
     "vpm-config": "^2.0.0"
+  },
+  "directories": {
+    "test": "test"
   }
 }
