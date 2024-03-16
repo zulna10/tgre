@@ -1,6 +1,6 @@
 {
   "name": "tgre",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "日志输出, log output",
   "main": "app.js",
   "scripts": {
