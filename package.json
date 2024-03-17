@@ -1,6 +1,6 @@
 {
   "name": "tgre",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "日志输出, log output",
   "main": "app.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zulna10/tgre.git"
+    "url": "https://github.com/zulna10/tgre.git"
   },
   "keywords": [
     "log",
